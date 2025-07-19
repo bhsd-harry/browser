@@ -2,6 +2,8 @@ import {rawurldecode} from '@bhsd/common';
 import type {ConfigData} from 'wikiparser-node';
 import type {LanguageServiceBase} from 'wikiparser-node/extensions/typings.ts';
 
+declare const $LANGS: string[];
+
 declare interface Require {
 	config(config: {paths?: Record<string, string>}): void;
 
@@ -13,6 +15,10 @@ declare interface Obj {
 }
 
 declare type ConfigGetter = () => Promise<ConfigData>;
+
+declare global {
+	const define: unknown;
+}
 
 export const CDN = 'https://testingcf.jsdelivr.net';
 
@@ -171,8 +177,7 @@ export const getWikiparse = async (
 		const key = 'wikiparse-i18n',
 			{version} = wikiparse;
 		try {
-			// @ts-expect-error build-time constant
-			wikiparse.setI18N(await setI18N(`${wikiparse.CDN}/i18n`, version, langs, $LANGS as string[], key));
+			wikiparse.setI18N(await setI18N(`${wikiparse.CDN}/i18n`, version, langs, $LANGS, key));
 		} catch {
 			setObject(key, {version, lang: 'en'});
 		}
