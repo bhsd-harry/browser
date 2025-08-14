@@ -2,7 +2,8 @@ import {rawurldecode} from '@bhsd/common';
 import type {ConfigData} from 'wikiparser-node';
 import type {LanguageServiceBase} from 'wikiparser-node/extensions/typings.ts';
 
-declare const $LANGS: string[];
+declare const $LANGS: string[],
+	define: unknown;
 
 declare interface Require {
 	config(config: {paths?: Record<string, string>}): void;
@@ -15,10 +16,6 @@ declare interface Obj {
 }
 
 declare type ConfigGetter = () => Promise<ConfigData>;
-
-declare global {
-	const define: unknown;
-}
 
 export const CDN = 'https://testingcf.jsdelivr.net';
 

@@ -5,7 +5,8 @@ const fs = require('fs'),
 	path = require('path'),
 	esbuild = require('esbuild');
 const langs = fs.readdirSync(path.join(require.resolve('wikiparser-node'), '..', '..', 'i18n'))
-	.map(file => file.slice(0, -5));
+	.map(file => file.slice(0, -5))
+	.filter(file => file !== 'en');
 
 esbuild.buildSync({
 	entryPoints: ['src/index.ts'],
