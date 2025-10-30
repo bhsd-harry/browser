@@ -21,7 +21,7 @@
 		"lint": "npm run lint:ts"
 	},
 	"devDependencies": {
-		"@bhsd/code-standard": "^1.2.0",
+		"@bhsd/code-standard": "^1.3.0",
 		"@bhsd/common": "^1.0.1",
 		"@stylistic/eslint-plugin": "^3.1.0",
 		"@types/node": "^24.9.2",
