@@ -2,6 +2,8 @@ import {rawurldecode} from '@bhsd/common';
 import type {ConfigData} from 'wikiparser-node';
 import type {LanguageServiceBase} from 'wikiparser-node/extensions/typings.ts';
 
+export type ConfigGetter = () => Promise<ConfigData>;
+
 declare const $LANGS: string[],
 	define: unknown;
 
@@ -14,8 +16,6 @@ declare interface Require {
 declare interface Obj {
 	[x: string]: Obj | undefined;
 }
-
-declare type ConfigGetter = () => Promise<ConfigData>;
 
 export const CDN = 'https://testingcf.jsdelivr.net';
 
