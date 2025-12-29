@@ -156,8 +156,13 @@ export const getWikiparse = async (
 	langs?: string | string[],
 	cdn?: string,
 ): Promise<void> => {
-	const dir = 'extensions/dist';
-	let src = cdn || `npm/wikiparser-node/${dir}/base.min.js`;
+	const repo = 'npm/wikiparser-node',
+		dir = 'extensions/dist';
+	if (cdn && /\.jsdelivr\.net\/?/iu.test(cdn)) {
+		// eslint-disable-next-line no-param-reassign
+		cdn += (cdn.endsWith('/') ? '' : '/') + repo;
+	}
+	let src = cdn || `${repo}/${dir}/base.min.js`;
 	if (!src.endsWith('.js')) {
 		src = `${src}${src.endsWith('/') ? '' : '/'}${dir}/base.js`;
 	}
@@ -188,15 +193,17 @@ const lsps = new WeakMap<object, LanguageServiceBase>();
  * @param obj 关联对象
  * @param include 是否嵌入
  * @param getConfig 获取解析配置的函数
+ * @param cdn CDN 地址
  * @param lang 语言代码
  */
 export const getLSP = (
 	obj: object,
 	include?: boolean,
 	getConfig?: ConfigGetter,
+	cdn?: string,
 	lang?: string,
 ): LanguageServiceBase | undefined => {
-	void getWikiparse(getConfig, lang);
+	void getWikiparse(getConfig, lang, cdn);
 	if (typeof wikiparse !== 'object' || !wikiparse.LanguageService || lsps.has(obj)) {
 		return lsps.get(obj);
 	}
