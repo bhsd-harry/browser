@@ -158,7 +158,7 @@ export const getWikiparse = async (
 ): Promise<void> => {
 	const repo = 'npm/wikiparser-node',
 		dir = 'extensions/dist';
-	if (cdn && /\.jsdelivr\.net\/?/iu.test(cdn)) {
+	if (cdn && /\.jsdelivr\.net\/?$/iu.test(cdn)) {
 		// eslint-disable-next-line no-param-reassign
 		cdn += (cdn.endsWith('/') ? '' : '/') + repo;
 	}
