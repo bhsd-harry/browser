@@ -17,7 +17,7 @@ declare interface Obj {
 	[x: string]: Obj | undefined;
 }
 
-export const CDN = 'https://testingcf.jsdelivr.net';
+export const CDN = 'https://fastly.jsdelivr.net';
 
 const textarea = /* #__PURE__ */
 	(() => typeof document === 'object' ? document.createElement('textarea') : undefined)();
