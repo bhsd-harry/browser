@@ -3,10 +3,14 @@
 		"src/*.ts"
 	],
 	"compilerOptions": {
+		"types": [
+			"node"
+		],
 		"target": "ES2024",
 		"module": "commonjs",
 		"declaration": true,
 		"emitDeclarationOnly": true,
+		"rootDir": "src",
 		"outDir": "dist",
 		"alwaysStrict": true,
 		"exactOptionalPropertyTypes": true,

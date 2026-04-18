@@ -1,6 +1,6 @@
 import {rawurldecode} from '@bhsd/common';
 import type {ConfigData} from 'wikiparser-node';
-import type {LanguageServiceBase} from 'wikiparser-node/extensions/typings.ts';
+import type {LanguageServiceBase} from 'wikiparser-node/dist/extensions/typings';
 
 export type ConfigGetter = () => Promise<ConfigData>;
 
