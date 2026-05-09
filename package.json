@@ -1,6 +1,6 @@
 {
 	"name": "@bhsd/browser",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"homepage": "https://github.com/bhsd-harry/browser#readme",
 	"bugs": {
 		"url": "https://github.com/bhsd-harry/browser/issues"
@@ -24,7 +24,7 @@
 	"devDependencies": {
 		"@bhsd/code-standard": "^2.4.2",
 		"@bhsd/common": "^2.2.1",
-		"@types/node": "^24.11.0",
+		"@types/node": "^25.6.2",
 		"@typescript-eslint/parser": "^8.59.2",
 		"esbuild": "^0.28.0",
 		"eslint": "^10.3.0",
