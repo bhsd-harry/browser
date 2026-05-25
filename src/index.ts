@@ -56,7 +56,7 @@ export const loadScript = (src: string, globalConst: string, amd?: boolean): Pro
 		const path = /^https?:\/\//iu.test(src) ? src : `${CDN}/${src}`;
 		let obj: Obj | undefined = globalThis as unknown as Obj;
 		for (const prop of globalConst.split('.')) {
-			obj = obj?.[prop];
+			obj = obj === globalThis as unknown as Obj ? getGlobal(prop) as Obj | undefined : obj?.[prop];
 		}
 		if (obj) {
 			resolve();
@@ -206,10 +206,22 @@ export const getLSP = (
 	lang?: string,
 ): LanguageServiceBase | undefined => {
 	void getWikiparse(getConfig, lang, cdn);
-	if (typeof wikiparse !== 'object' || !wikiparse.LanguageService || lsps.has(obj)) {
+	if (typeof wikiparse !== 'object' || !isGlobal('wikiparse') || !wikiparse.LanguageService || lsps.has(obj)) {
 		return lsps.get(obj);
 	}
 	const lsp = new wikiparse.LanguageService(include);
 	lsps.set(obj, lsp);
 	return lsp;
 };
+
+/**
+ * 判断全局变量是否存在
+ * @param prop 变量名
+ */
+export const isGlobal = (prop: string): boolean => Object.hasOwn(globalThis, prop);
+
+/**
+ * 获取全局变量的值
+ * @param prop 变量名
+ */
+export const getGlobal = (prop: string): unknown => Object.getOwnPropertyDescriptor(globalThis, prop)?.value;

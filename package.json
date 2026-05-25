@@ -1,6 +1,6 @@
 {
 	"name": "@bhsd/browser",
-	"version": "0.4.0",
+	"version": "0.5.0",
 	"homepage": "https://github.com/bhsd-harry/browser#readme",
 	"bugs": {
 		"url": "https://github.com/bhsd-harry/browser/issues"
@@ -22,13 +22,11 @@
 		"lint": "npm run lint:ts"
 	},
 	"devDependencies": {
-		"@bhsd/code-standard": "^2.5.0",
+		"@bhsd/code-standard": "^2.6.2",
 		"@bhsd/common": "^2.2.1",
-		"@types/node": "^25.9.0",
-		"@typescript-eslint/parser": "^8.59.4",
 		"esbuild": "^0.28.0",
-		"eslint": "^10.4.0",
+		"eslint": "^10.4.1",
 		"typescript": "^6.0.3",
-		"wikiparser-node": "^1.40.0"
+		"wikiparser-node": "^1.43.0"
 	}
 }
