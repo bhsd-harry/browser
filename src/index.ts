@@ -17,6 +17,18 @@ declare interface Obj {
 	[x: string]: Obj | undefined;
 }
 
+declare interface WikiparseOptions {
+
+	/** 获取解析配置的函数 */
+	getConfig?: ConfigGetter | undefined;
+
+	/** 语言代码或语言代码列表 */
+	langs?: string | string[] | undefined;
+
+	/** CDN 地址 */
+	cdn?: string | undefined;
+}
+
 export const CDN = 'https://fastly.jsdelivr.net';
 
 const textarea = /* #__PURE__ */
@@ -149,15 +161,12 @@ let configLoaded = false,
 
 /**
  * 加载 wikiparse
- * @param getConfig 获取解析配置的函数
- * @param langs 语言代码
- * @param cdn CDN 地址
+ * @param opt 选项
+ * @param opt.getConfig 获取解析配置的函数
+ * @param opt.langs 语言代码或语言代码列表
+ * @param opt.cdn CDN 地址
  */
-export const getWikiparse = async (
-	getConfig?: ConfigGetter,
-	langs?: string | string[],
-	cdn?: string,
-): Promise<void> => {
+export const getWikiparse = async ({getConfig, langs, cdn}: WikiparseOptions = {}): Promise<void> => {
 	const repo = 'npm/wikiparser-node',
 		dir = 'extensions/dist';
 	if (cdn && /\.jsdelivr\.net\/?$/iu.test(cdn)) {
@@ -194,18 +203,10 @@ const lsps = new WeakMap<object, LanguageServiceBase>();
  * 获取LSP
  * @param obj 关联对象
  * @param include 是否嵌入
- * @param getConfig 获取解析配置的函数
- * @param cdn CDN 地址
- * @param lang 语言代码
+ * @param opt 选项
  */
-export const getLSP = (
-	obj: object,
-	include?: boolean,
-	getConfig?: ConfigGetter,
-	cdn?: string,
-	lang?: string,
-): LanguageServiceBase | undefined => {
-	void getWikiparse(getConfig, lang, cdn);
+export const getLSP = (obj: object, include?: boolean, opt?: WikiparseOptions): LanguageServiceBase | undefined => {
+	void getWikiparse(opt);
 	if (typeof wikiparse !== 'object' || !isGlobal('wikiparse') || !wikiparse.LanguageService || lsps.has(obj)) {
 		return lsps.get(obj);
 	}
