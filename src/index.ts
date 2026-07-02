@@ -31,6 +31,14 @@ declare interface WikiparseOptions {
 
 export const CDN = 'https://fastly.jsdelivr.net';
 
+const dict: Record<string, string> = {'\n': '<br>', '&': '&amp;', '<': '&lt;'};
+
+/**
+ * 转义HTML字符串
+ * @param text 原字符串
+ */
+export const escHTML = (text: string): string => text.replaceAll(/[\n<&]/gu, ch => dict[ch]!);
+
 const textarea = /* #__PURE__ */
 	(() => typeof document === 'object' ? document.createElement('textarea') : undefined)();
 
