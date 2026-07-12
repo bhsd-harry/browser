@@ -11,7 +11,6 @@ esbuild.buildSync({
 	entryPoints: ['src/index.ts'],
 	charset: 'utf8',
 	target: 'es2024',
-	bundle: true,
 	format: 'esm',
 	define: {
 		$LANGS: JSON.stringify(langs),

@@ -31,14 +31,6 @@ declare interface WikiparseOptions {
 
 export const CDN = 'https://fastly.jsdelivr.net';
 
-const dict: Record<string, string> = {'\n': '<br>', '&': '&amp;', '<': '&lt;'};
-
-/**
- * 转义HTML字符串
- * @param text 原字符串
- */
-export const escHTML = (text: string): string => text.replaceAll(/[\n<&]/gu, ch => dict[ch]!);
-
 const textarea = /* #__PURE__ */
 	(() => typeof document === 'object' ? document.createElement('textarea') : undefined)();
 
@@ -183,7 +175,7 @@ export const getWikiparse = async ({getConfig, langs, cdn}: WikiparseOptions = {
 	}
 	let src = cdn || `${repo}/${dir}/base.min.js`;
 	if (!src.endsWith('.js')) {
-		src = `${src}${src.endsWith('/') ? '' : '/'}${dir}/base.js`;
+		src += `${src.endsWith('/') ? '' : '/'}${dir}/base.js`;
 	}
 	await loadScript(src, 'wikiparse');
 	await loadScript(`${wikiparse.CDN}/${dir}/lsp.js`, 'wikiparse.LanguageService');

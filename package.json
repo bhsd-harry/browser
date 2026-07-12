@@ -1,6 +1,6 @@
 {
 	"name": "@bhsd/browser",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"homepage": "https://github.com/bhsd-harry/browser#readme",
 	"bugs": {
 		"url": "https://github.com/bhsd-harry/browser/issues"
@@ -17,16 +17,18 @@
 	"scripts": {
 		"ls": "npm i --package-lock-only && npm ls --package-lock-only --all --omit=dev",
 		"prepublishOnly": "npm run build",
-		"build": "tsc && node build.cjs",
+		"build": "tsc && node build.cjs && eslint --no-config-lookup -c eslint.dist.js dist/*.js",
 		"lint:ts": "tsc --noEmit && eslint --cache .",
 		"lint": "npm run lint:ts"
 	},
+	"dependencies": {
+		"@bhsd/common": "^4.0.1"
+	},
 	"devDependencies": {
-		"@bhsd/code-standard": "^3.1.0",
-		"@bhsd/common": "^3.0.0",
+		"@bhsd/code-standard": "^3.3.0",
 		"esbuild": "^0.28.1",
-		"eslint": "^10.6.0",
+		"eslint": "^10.7.0",
 		"typescript": "^6.0.3",
-		"wikiparser-node": "^1.45.0"
+		"wikiparser-node": "^1.46.1"
 	}
 }
