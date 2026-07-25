@@ -7,9 +7,8 @@
 			"node"
 		],
 		"target": "ES2024",
-		"module": "commonjs",
+		"module": "es6",
 		"declaration": true,
-		"emitDeclarationOnly": true,
 		"rootDir": "src",
 		"outDir": "dist",
 		"alwaysStrict": true,
