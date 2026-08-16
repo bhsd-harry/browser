@@ -6,7 +6,11 @@
 		"types": [
 			"node"
 		],
-		"target": "ES2024",
+		"lib": [
+			"ES2024",
+			"DOM"
+		],
+		"target": "ES2019",
 		"module": "es6",
 		"declaration": true,
 		"rootDir": "src",

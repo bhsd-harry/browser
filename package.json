@@ -1,6 +1,6 @@
 {
 	"name": "@bhsd/browser",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"homepage": "https://github.com/bhsd-harry/browser#readme",
 	"bugs": {
 		"url": "https://github.com/bhsd-harry/browser/issues"
@@ -33,6 +33,6 @@
 		"esbuild": "^0.28.2",
 		"eslint": "^10.8.1",
 		"typescript": "^6.0.3",
-		"wikiparser-node": "^1.46.2"
+		"wikiparser-node": "^1.46.3"
 	}
 }

@@ -1,9 +1,18 @@
-const transparent = /^(?:transparent|#0{4}|#0{8}|rgba?\(\s*0(?:(?:\s*,\s*0){3}|(?:\s+0){2}\s*\/\s*0)\s*\))$/iu;
-let ctx: OffscreenCanvasRenderingContext2D | undefined;
+const transparent = /^(?:transparent|#0{4}|#0{8}|rgba?\(\s*0(?:(?:\s*,\s*0){3}|(?:\s+0){2}\s*\/\s*0)\s*\))$/iu,
+	contextSettings: CanvasRenderingContext2DSettings = {alpha: true, willReadFrequently: true};
+let ctx: OffscreenCanvasRenderingContext2D | CanvasRenderingContext2D | undefined;
 
 export const rgba = (color: string): [number, number, number, number] | [] => {
-	ctx ??= new OffscreenCanvas(1, 1)
-		.getContext('2d', {alpha: true, willReadFrequently: true})!;
+	if (ctx) {
+		//
+	} else if (typeof OffscreenCanvas === 'function') {
+		ctx = new OffscreenCanvas(1, 1).getContext('2d', contextSettings)!;
+	} else {
+		const canvas = document.createElement('canvas');
+		canvas.width = 1;
+		canvas.height = 1;
+		ctx = canvas.getContext('2d', contextSettings)!;
+	}
 	ctx.fillStyle = 'transparent';
 	ctx.fillStyle = color;
 	if (ctx.fillStyle === 'rgba(0, 0, 0, 0)' && !transparent.test(color)) {
