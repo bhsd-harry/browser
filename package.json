@@ -22,8 +22,9 @@
 		"ls": "npm i --package-lock-only && npm ls --package-lock-only -a --omit=dev",
 		"prepublishOnly": "npm run build",
 		"build": "tsc && node build.cjs && eslint --no-config-lookup -c eslint.dist.js dist/*.js",
-		"lint:ts": "tsc --noEmit && eslint --cache .",
+		"lint:ts": "tsc --noEmit && oxlint && eslint --cache .",
 		"lint": "npm run lint:ts",
+		"migrate": "oxlint-migrate",
 		"test": "echo 'This package has no tests.'"
 	},
 	"dependencies": {
@@ -31,9 +32,11 @@
 	},
 	"devDependencies": {
 		"@bhsd/code-standard": "^5.0.0",
+		"@oxlint/migrate": "^1.89.0",
 		"esbuild": "^0.28.2",
 		"eslint": "^10.13.0",
+		"oxlint": "^1.89.0",
 		"typescript": "^6.0.3",
-		"wikiparser-node": "^1.48.0"
+		"wikiparser-node": "^1.48.1"
 	}
 }

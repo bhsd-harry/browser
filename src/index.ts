@@ -92,7 +92,7 @@ export const loadScript = (src: string, globalConst: string, amd?: boolean): Pro
 	return promise;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line @typescript-eslint/no-explicit-any
 export const getObject = (key: string): any => JSON.parse(String(localStorage.getItem(key)));
 export const setObject = (key: string, value: unknown): void => {
 	localStorage.setItem(key, JSON.stringify(value));
@@ -170,7 +170,7 @@ export const getWikiparse = async ({getConfig, langs, cdn}: WikiparseOptions = {
 	const repo = 'npm/wikiparser-node',
 		dir = 'extensions/dist';
 	if (cdn && /\.jsdelivr\.net\/?$/iu.test(cdn)) {
-		// eslint-disable-next-line no-param-reassign
+		// oxlint-disable-next-line no-param-reassign
 		cdn += (cdn.endsWith('/') ? '' : '/') + repo;
 	}
 	let src = cdn || `${repo}/${dir}/base.min.js`;
