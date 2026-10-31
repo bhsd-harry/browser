@@ -1,6 +1,6 @@
 {
 	"name": "@bhsd/browser",
-	"version": "2.1.1",
+	"version": "2.2.0",
 	"homepage": "https://github.com/bhsd-harry/browser#readme",
 	"bugs": {
 		"url": "https://github.com/bhsd-harry/browser/issues"
@@ -14,7 +14,7 @@
 	"types": "./dist/index.d.ts",
 	"exports": {
 		".": "./dist/index.js",
-		"./color": "./dist/color.js"
+		"./*": "./dist/*.js"
 	},
 	"type": "module",
 	"sideEffects": false,
@@ -31,10 +31,10 @@
 		"@bhsd/common": "^4.1.0"
 	},
 	"devDependencies": {
-		"@bhsd/code-standard": "^5.0.0",
+		"@bhsd/code-standard": "^5.1.0",
 		"@oxlint/migrate": "^1.89.0",
 		"esbuild": "^0.28.2",
-		"eslint": "^10.13.0",
+		"eslint": "^10.14.0",
 		"oxlint": "^1.89.0",
 		"typescript": "^6.0.3",
 		"wikiparser-node": "^1.48.1"
