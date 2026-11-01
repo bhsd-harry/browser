@@ -1,6 +1,6 @@
 {
 	"name": "@bhsd/browser",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"homepage": "https://github.com/bhsd-harry/browser#readme",
 	"bugs": {
 		"url": "https://github.com/bhsd-harry/browser/issues"
@@ -32,11 +32,11 @@
 	},
 	"devDependencies": {
 		"@bhsd/code-standard": "^5.1.0",
-		"@oxlint/migrate": "^1.89.0",
+		"@oxlint/migrate": "^1.90.0",
 		"esbuild": "^0.28.2",
 		"eslint": "^10.14.0",
-		"oxlint": "^1.89.0",
+		"oxlint": "^1.90.0",
 		"typescript": "^6.0.3",
-		"wikiparser-node": "^1.48.1"
+		"wikiparser-node": "^2.1.0"
 	}
 }

@@ -59,8 +59,9 @@ const loading = new Map<string, Promise<void>>();
  * @param src 脚本地址
  * @param globalConst 脚本全局变量名
  * @param amd 是否兼容 AMD
+ * @param esm 是否 ESM
  */
-export const loadScript = (src: string, globalConst: string, amd?: boolean): Promise<void> => {
+export const loadScript = (src: string, globalConst: string, amd?: boolean, esm?: boolean): Promise<void> => {
 	if (loading.has(src)) {
 		return loading.get(src)!;
 	}
@@ -82,6 +83,9 @@ export const loadScript = (src: string, globalConst: string, amd?: boolean): Pro
 		} else {
 			const script = document.createElement('script');
 			script.src = path;
+			if (esm) {
+				script.type = 'module';
+			}
 			script.onload = (): void => {
 				resolve();
 			};
