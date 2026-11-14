@@ -229,4 +229,10 @@ export const isGlobal = (prop: string): boolean => Object.hasOwn(globalThis, pro
  * 获取全局变量的值
  * @param prop 变量名
  */
-export const getGlobal = (prop: string): unknown => Object.getOwnPropertyDescriptor(globalThis, prop)?.value;
+export const getGlobal = (prop: string): unknown => {
+	const descriptor = Object.getOwnPropertyDescriptor(globalThis, prop);
+	if (!descriptor) {
+		return undefined;
+	}
+	return 'value' in descriptor ? descriptor.value : descriptor.get?.call(globalThis);
+};

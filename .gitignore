@@ -1,4 +1,5 @@
 /.vscode/
 /package-lock.json
 dist/
-.eslintcache
+/.eslintcache
+/.coderabbit.yaml

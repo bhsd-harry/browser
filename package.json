@@ -1,6 +1,6 @@
 {
 	"name": "@bhsd/browser",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"homepage": "https://github.com/bhsd-harry/browser#readme",
 	"bugs": {
 		"url": "https://github.com/bhsd-harry/browser/issues"
@@ -28,7 +28,7 @@
 		"test": "echo 'This package has no tests.'"
 	},
 	"dependencies": {
-		"@bhsd/common": "^4.1.0"
+		"@bhsd/common": "^4.1.1"
 	},
 	"devDependencies": {
 		"@bhsd/code-standard": "^5.1.0",
